@@ -12,8 +12,9 @@ class Solution(object):
         :rtype: ListNode
         """
 
-        if head is None:
+        if head is None or head.next is None:
             return head
+
         ahead = self.reverseList(head.next)
 
         head.next.next = head

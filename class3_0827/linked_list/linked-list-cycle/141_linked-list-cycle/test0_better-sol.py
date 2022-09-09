@@ -1,9 +1,5 @@
 # Definition for singly-linked list.
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
+from class3_0827.linked_list.utils import ListNode
 
 class Solution(object):
     def hasCycle(self, head):
@@ -15,9 +11,22 @@ class Solution(object):
         fast = head
         slow = head
 
-        while fast.next.next and fast.next:
-            fast = fast.next.next
-            slow = slow.next
+        if head is None:  # 如果head为空直接return
+            return False
+
+        # while fast.next and fast.next.next:
+        #     fast = fast.next.next
+        #     slow = slow.next
+        #     if fast == slow:
+        #         return True
+        # return False
+
+        while fast.next and fast.next.next: # 这个要比上面的快
+            fast = fast.next
             if fast == slow:
                 return True
+            fast = fast.next
+            if fast == slow:
+                return True
+            slow = slow.next
         return False
