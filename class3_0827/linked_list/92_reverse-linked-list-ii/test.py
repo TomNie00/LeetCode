@@ -1,7 +1,9 @@
-from typing import List
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
-from class3_0827.linked_list.utils import ListNode
-from class3_0827.linked_list.utils import build_list, display
 
 class Solution(object):
     def reverseBetween(self, head, left, right):
@@ -11,34 +13,10 @@ class Solution(object):
         :type right: int
         :rtype: ListNode
         """
-        # vls = []
-        # while head is not None:
-        #     vls.append(head.val)
-        #     head = head.next
-        # subarr = vls[left - 1:right]
-        # subarr = subarr[::-1]
-        #
-        # newarr = vls[:left - 1] + subarr + vls[right:]
-        #
-        # ahead = None
-        # tail = None
-        #
-        # for i in range(len(newarr)):
-        #     cur_node = ListNode()
-        #     cur_node.val = newarr[i]
-        #     if tail is not None:
-        #         tail.next = cur_node
-        #         tail = cur_node
-        #     else:
-        #         tail = cur_node
-        #         ahead = cur_node
-        #
-        # return ahead
-
         if head is None or left == right:
             return head
 
-        dummyhead = ListNode(0)
+        dummyhead = ListNode(0, head)
         dummyhead.next = head
         curr = head
         ahead = None
@@ -46,8 +24,8 @@ class Solution(object):
         atail = None
         sectail = None
         prev = None
-        index = 1
-
+        index = 0
+        
         while curr is not None:
             if index == left - 1:
                 ahead = curr
@@ -66,10 +44,11 @@ class Solution(object):
         # 开始反转从left到right的节点
         curr = sechead
         while curr != sectail:
-            nextNode = curr.next
+            # 事先保存cur的下一个节点
+            next = curr.next
             curr.next = prev
             prev = curr
-            curr = nextNode
+            curr = next
 
         # 将反转之后的节点进行拼接
         ahead.next = atail
@@ -82,10 +61,6 @@ if __name__ == '__main__':
     head = [1, 2, 3, 4, 5]
     left = 2
     right = 4
-    print('*********\n')
+
     res = obj.reverseBetween(head, left, right)
     print(res)
-
-
-
-

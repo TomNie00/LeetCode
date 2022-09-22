@@ -37,6 +37,7 @@ class Solution(object):
                             for i in range(len(temp)):
                                 stack.pop()
                             temp = ''
+                            comp = ''
             if l != len(stack):
                 l = len(stack)
             else:
@@ -51,8 +52,8 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    s = "deeedbbcccbdaa"
-    k = 3
+    s = "abcd"
+    k = 2
     obj = Solution()
 
     res = obj.removeDuplicates(s, k)

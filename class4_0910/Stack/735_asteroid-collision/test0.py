@@ -11,11 +11,19 @@ class Solution(object):
             if char > 0:
                 stack.append(char)
             else:
-                while stack is not None and stack[-1] > 0 and stack[-1] < -char:
-                    stack.pop()
-                if stack is not None and stack[-1] > 0:
-                    if stack[-1] == -char:
+                while len(stack) != 0:
+                    if stack[-1] > 0 and stack[-1] < -char:
+                        # 判断栈顶元素是否为正同时判断是否小于char的绝对值
                         stack.pop()
+                    else:
+                        break
+                if len(stack) != 0:
+                    if stack[-1] > 0:
+                        if stack[-1] == -char:
+                            # 判断是否两数是否相等
+                            stack.pop()
+                    else:
+                        stack.append(char)
                 else:
                     stack.append(char)
 
@@ -23,7 +31,7 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    s = [10,2,-5]
+    s = [-2,-1,1,2]
     obj = Solution()
 
     res = obj.asteroidCollision(s)
