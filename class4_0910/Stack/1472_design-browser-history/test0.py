@@ -1,5 +1,5 @@
 class BrowserHistory(object):
-
+    # Passed
     def __init__(self, homepage):
         """
         :type homepage: str
@@ -35,7 +35,7 @@ class BrowserHistory(object):
         :type steps: int
         :rtype: str
         """
-        if steps + self.pos > len(self.stack):
+        if steps + self.pos >= len(self.stack):
             position = len(self.stack) - self.pos - 1
             self.pos += position
             return self.stack[self.pos]

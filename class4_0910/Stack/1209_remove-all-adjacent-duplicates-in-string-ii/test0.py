@@ -5,7 +5,7 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
-
+        # time limited
         stack = []
         char = ''
         temp = ''
@@ -53,7 +53,7 @@ class Solution(object):
 
 if __name__ == '__main__':
     s = "abcd"
-    k = 2
+    k = 1
     obj = Solution()
 
     res = obj.removeDuplicates(s, k)
