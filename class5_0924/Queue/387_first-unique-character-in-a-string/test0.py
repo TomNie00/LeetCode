@@ -1,4 +1,5 @@
 from collections import deque
+from queue import Queue
 class Solution(object):
     def firstUniqChar(self, s):
         """
@@ -10,14 +11,26 @@ class Solution(object):
         #         return s.index(char)
         # more faster than below but still run out of time
 
-        q = deque()
+        # q1 = Queue()
+        #
+        # for char in s:
+        #     q1.put(char)
+        #
+        # for char in s:
+        #     if q.count(char) == 1:
+        #         return q.index(char)
 
-        for char in s:
-            q.append(char)
+        count_dict = {}
 
-        for char in s:
-            if q.count(char) == 1:
-                return q.index(char)
+        for c in s:
+            if c in count_dict:
+                count_dict[c] += 1
+            else:
+                count_dict[c] = 1
+
+        for idx, value in enumerate(s):
+            if count_dict[value] == 1:
+                return idx
 
         return -1
 

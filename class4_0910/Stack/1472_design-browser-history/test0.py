@@ -36,6 +36,7 @@ class BrowserHistory(object):
         :rtype: str
         """
         if steps + self.pos >= len(self.stack):
+            # can not use len()
             position = len(self.stack) - self.pos - 1
             self.pos += position
             return self.stack[self.pos]
