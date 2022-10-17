@@ -25,7 +25,7 @@ class Solution(object):
 if __name__ == "__main__":
     obj = Solution()
 
-    nums = [1,2,1,1,1]
+    nums = [2,3,1,1,4]
 
     res = obj.jump(nums)
 

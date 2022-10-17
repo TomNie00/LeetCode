@@ -30,7 +30,7 @@ if __name__ == "__main__":
     obj = Solution()
     # import ipdb;ipdb.set_trace()
 
-    # s = [9, 9,9]
+    # s = [9_palindrome-number, 9_palindrome-number,9_palindrome-number]
     # print(s)
     # ans = obj.plusOne(s)
     # print(ans)
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     # print(ans)
     # print('\n---\n')
     #
-    # s = [9]
+    # s = [9_palindrome-number]
     # print(s)
     # ans = obj.plusOne(s)
     # print(ans)
