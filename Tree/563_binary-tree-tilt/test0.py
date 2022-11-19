@@ -11,30 +11,24 @@ class Solution(object):
         """
         return the sum of cur subtree and the sum of subtree tilts.
         """
-        if node is None:
+        if not node:
             return 0, 0
-        cur_val = node.val
+
+        curr_val = node.val
         left_sum, left_tilt = 0, 0
 
-        if node.left is None:
-            left_sum, left_tilt = 0, 0
-        else:
+        if node.left:
             left_sum, left_tilt = self.workhorse(node.left)
 
         right_sum, right_tilt = 0, 0
 
-        if node.right is None:
-            right_sum, right_tilt = 0, 0
-        else:
+        if node.right:
             right_sum, right_tilt = self.workhorse(node.right)
 
-        cur_sum = left_sum + right_sum + cur_val
-        cur_tilt = left_sum - right_sum
+        curr_sum = left_sum + right_sum + curr_val
+        curr_tile = abs(left_sum - right_sum)
 
-        if cur_tilt < 0:
-            cur_tilt = -cur_tilt
-
-        return cur_sum, left_tilt + right_tilt + cur_tilt
+        return curr_sum, left_tilt + right_tilt + curr_tile
 
     def findTilt(self, root):
         """

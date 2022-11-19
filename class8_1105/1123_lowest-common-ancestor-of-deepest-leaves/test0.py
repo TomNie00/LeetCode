@@ -12,22 +12,5 @@ class Solution(object):
         :type root: TreeNode
         :rtype: TreeNode
         """
-        # submit accept
 
-        return self.workhorse(root, 0)[0]
 
-    def workhorse(self, root, depth):
-        if not root:
-            return root, 0
-        if not root.left and not root.right:
-            return root, depth
-
-        left_node, left_depth = self.workhorse(root.left, depth + 1)
-        right_node, right_depth = self.workhorse(root.right, depth + 1)
-
-        if left_depth == right_depth:
-            return root, left_depth
-        elif left_depth > right_depth:
-            return left_node, left_depth
-        else:
-            return right_node, right_depth
