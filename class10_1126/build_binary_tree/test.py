@@ -53,9 +53,13 @@ def bfs(root):
                 q.append(curr_node.left)
             if curr_node.right:
                 q.append(curr_node.right)
-            level.append(curr_node.val)
+            level.append(curr_node)
 
-        print("level: ", level)
+            for node in level:
+
+                left_info = node.left.val if node.left is not None else None
+                right_info = node.right.val if node.right is not None else None
+                print('node val {}, left val {}, right val {}'.format(node.val,left_info, right_info))
 
 def deserialize(int_array):
     if len(int_array) == 0:
@@ -76,9 +80,12 @@ def deserialize(int_array):
 
 if __name__ == '__main__':
 
-    root = [1,None,2,None,3,None,4,None,5]
+    root = [1,5,3,None,4,10,6,9,2]
+
+    root1 = root[1::][::-1]
     # root = []
     # root1 = buildBinaryTree(root)
     # root2 = insertLevelOrder(root, 0, len(root))
     root3 = deserialize(root)
-    # print(bfs(root3))
+    print(bfs(root3))
+    print(root1)
